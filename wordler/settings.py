@@ -7,10 +7,9 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY: read secrets and environment-specific options from env vars
 SECRET_KEY = "django-insecure-h49si$defb6t27h1-g7v0n_l!eu7zq0ff_f@ss3pi$b8qz8!s5"
 
-DEBUG = "True"
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -46,6 +45,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -55,14 +55,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'wordler.wsgi.application'
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 
 DATABASES = {
     "default": dj_database_url.parse(
